@@ -61,6 +61,7 @@ The entire code is written in Python **this project made and tested in python 3.
   cited from [Silent-Face-Anti-Spoofing](https://github.com/computervisioneng/Silent-Face-Anti-Spoofing.git)
   
 Visitors database (https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with-anti-spoofing/tree/main/visitor_database)
+visitor photo(https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with-anti-spoofing/blob/main/visitor_database/Keerthi%20Gowda%20H%20N.jpg)
 
 
 # Installation
