@@ -8,6 +8,7 @@
 from datetime import datetime
 import os
 
+print('testing')
 
 def get_time():
     return (str(datetime.now())[:-10]).replace(' ', '-').replace(':', '-')
