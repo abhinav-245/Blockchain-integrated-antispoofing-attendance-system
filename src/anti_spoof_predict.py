@@ -26,6 +26,8 @@ MODEL_MAPPING = {
     'MiniFASNetV2SE':MiniFASNetV2SE
 }
 
+#testing
+print('testing')
 
 class Detection:
     def __init__(self):
