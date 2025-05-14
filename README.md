@@ -28,7 +28,7 @@ The entire code is written in Python **this project made and tested in python 3.
 - Library:
   Using facenet_pytorch for [Inception Resnet (V1) models](https://github.com/davidsandberg/facenet/blob/master/src/models/inception_resnet_v1.py), pretrained on [VGGFace2](https://www.robots.ox.ac.uk/~vgg/data/vgg_face2/) and CASIA-Webface datasets. The datasets aligned with [MTCNN](https://kpzhang93.github.io/MTCNN_face_detection_alignment/index.html).
 - **WHY [MTCNN](https://kpzhang93.github.io/MTCNN_face_detection_alignment/index.html)?**
-  The Dlib face detector misses some of the hard examples (partial occlusion, silhouettes, etc). This makes the training set too “easy” which causes the model to perform worse on other benchmarks. To solve this, we use [Multi-task CNN](https://kpzhang93.github.io/MTCNN_face_detection_alignment/index.html) for face landmark detector that has proven to work very well in this setting.
+  The Dlib face detector misses some of the hard examples (partial occlusion, silhouettes, etc). This makes the training set too "easy" which causes the model to perform worse on other benchmarks. To solve this, we use [Multi-task CNN](https://kpzhang93.github.io/MTCNN_face_detection_alignment/index.html) for face landmark detector that has proven to work very well in this setting.
 
 **Anti-Spoofing**
 - Model: [MiniFASNet](https://github.com/AyuVirgiana/face-recognition-attendance-anti-spoofing/blob/main/src/model_lib/MiniFASNet.py) supported by [Silent-Face-Anti-Spoofing](https://github.com/computervisioneng/Silent-Face-Anti-Spoofing.git) developed by (https://www.minivision.cn/).
@@ -65,27 +65,69 @@ Visitors database (https://github.com/KeerthiGowdaHN/Face-recognition-attendance
 visitor photo https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with-anti-spoofing/blob/main/visitor_database/Keerthi%20Gowda%20H%20N.jpg
 
 
-# Installation
-Clone the repository:
-```bash
-git clone https://github.com/AyuVirgiana/face-recognition-attendance-anti-spoofing.git
-cd face-recognition-attendance-anti-spoofing
-```
-# Install dependencies/requirements
-Follow the setup instructions in the documentation to configure the system.
-```bash
-pip install -r requirements.txt
-```
-# Run the system
-```bash
-streamlit run [app.py] [ARGUMENTS)
-```
+# Installation and Setup
+
+## Prerequisites
+- Python 3.11.2 (recommended)
+- Git
+- pip (Python package installer)
+- Webcam (for face capture functionality)
+
+## Step-by-Step Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/AyuVirgiana/face-recognition-attendance-anti-spoofing.git
+   cd face-recognition-attendance-anti-spoofing
+   ```
+
+2. **Create and Activate Virtual Environment** (Recommended)
+   ```bash
+   # For Windows
+   python -m venv venv
+   .\venv\Scripts\activate
+
+   # For Linux/Mac
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Download Required Models**
+   - The face recognition model will be downloaded automatically on first run
+   - For anti-spoofing, ensure you have the MiniFASNet model files in the correct directory
+
+## Running the Application
+
+1. **Start the Application**
+   ```bash
+   streamlit run app.py
+   ```
+
+2. **Access the Web Interface**
+   - Open your web browser
+   - Navigate to the URL shown in the terminal (typically http://localhost:8501)
+
+3. **Using the Application**
+   - Use the sidebar to navigate between different features:
+     - Visitor Validation: Capture and validate faces
+     - View Visitor History: Check attendance records
+     - Add to Database: Register new visitors
+
+4. **Troubleshooting**
+   - If you encounter any issues with camera access, ensure your webcam is properly connected and accessible
+   - For model loading errors, verify that all dependencies are correctly installed
+   - Check the console output for any error messages
 
 
 # References
 - This project is supported by [Silent-Face-Anti-Spoofing](https://github.com/computervisioneng/Silent-Face-Anti-Spoofing.git) belongs to [minivision technology](https://www.minivision.cn/).Special thanks to Minivision for providing the anti-spoofing models used in this test. 
 - (https://github.com/timesler/facenet-pytorch.git) Face Recognition using Pytorch by timesler
-- Pytorch model weights were initialized using parameters ported from [David Sandberg’s tensorflow facenet repo](https://github.com/davidsandberg/facenet.git).
+- Pytorch model weights were initialized using parameters ported from [David Sandberg's tensorflow facenet repo](https://github.com/davidsandberg/facenet.git).
 
 
 # Contributors

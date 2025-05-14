@@ -12,6 +12,8 @@ from PIL import Image, ImageDraw
 from test import test
 import torch
 import datetime
+from blockchain.blockchain_handler import BlockchainHandler
+import json
 #######################################################
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -28,6 +30,25 @@ file_history    = 'visitors_history.csv'    ## To store visitor history informat
 
 ## Image formats allowed
 allowed_image_type = ['.png', 'jpg', '.jpeg']
+
+# Initialize blockchain handler with contract address
+def load_contract_address():
+    try:
+        with open('contract_address.json', 'r') as f:
+            data = json.load(f)
+            return data['address']
+    except:
+        return None
+
+# Store contract address
+def save_contract_address(address):
+    with open('contract_address.json', 'w') as f:
+        json.dump({'address': address}, f)
+
+# Initialize blockchain handler with contract address if available
+contract_address = load_contract_address()
+blockchain = BlockchainHandler(contract_address)
+
 def initialize_data():
     if os.path.exists(os.path.join(data_path, file_db)):
         # st.info('Database Found!')
@@ -59,24 +80,38 @@ def add_data_db(df_visitor_details):
 
 def BGR_to_RGB(image_in_array):
     return cv2.cvtColor(image_in_array, cv2.COLOR_BGR2RGB)
+
 def attendance(id, name):
     f_p = os.path.join(VISITOR_HISTORY, file_history)
     # st.write(f_p)
 
     now = datetime.datetime.now()
     dtString = now.strftime('%Y-%m-%d %H:%M:%S')
-    df_attendace_temp = pd.DataFrame(data={ "id"            : [id],
-                                            "visitor_name"  : [name],
-                                            "Timing"        : [dtString]
-                                            })
+    
+    try:
+        # Convert UUID to string
+        id_str = str(id)
+        
+        # Mark attendance on blockchain using the global blockchain instance
+        transaction_id = blockchain.mark_attendance(name, id_str)
+        
+        df_attendace_temp = pd.DataFrame(data={ "id"            : [id],
+                                                "visitor_name"  : [name],
+                                                "Timing"        : [dtString],
+                                                "transaction_id": [transaction_id]
+                                                })
 
-    if not os.path.isfile(f_p):
-        df_attendace_temp.to_csv(f_p, index=False)
-        # st.write(df_attendace_temp)
-    else:
-        df_attendace = pd.read_csv(f_p)
-        df_attendace = pd.concat([df_attendace,df_attendace_temp])
-        df_attendace.to_csv(f_p, index=False)
+        if not os.path.isfile(f_p):
+            df_attendace_temp.to_csv(f_p, index=False)
+            # st.write(df_attendace_temp)
+        else:
+            df_attendace = pd.read_csv(f_p)
+            df_attendace = pd.concat([df_attendace,df_attendace_temp])
+            df_attendace.to_csv(f_p, index=False)
+            
+        st.success(f"Attendance marked successfully! Transaction ID: {transaction_id}")
+    except Exception as e:
+        st.error(f"Failed to mark attendance on blockchain: {str(e)}")
 
 def view_attendace():
     f_p = os.path.join(VISITOR_HISTORY, file_history)
@@ -248,7 +283,7 @@ def main():
                     ## Filtering for similarity beyond threshold
                     similarity_threshold = col2.slider('Select Threshold for Similarity',
                                                          min_value=0.0, max_value=3.0,
-                                                         value=0.5)
+                                                         value=0.8)
                                                     ## check for similarity confidence greater than this threshold
 
                     flag_show = False
