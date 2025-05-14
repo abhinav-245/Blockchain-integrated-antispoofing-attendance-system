@@ -1,9 +1,19 @@
-# WEB-BASED FACE RECOGNITION ATTENDANCE SYSTEM with ANTI SPOOFING
-This GitHub repository contains a web-based Facial Recognition Attendance System built with Python language and Streamlit framework. 
+# WEB-BASED FACE RECOGNITION ATTENDANCE SYSTEM with ANTI SPOOFING and BLOCKCHAIN INTEGRATION
 
-The System built with Face Recognition using [Inception Resnet (V1) models](https://github.com/davidsandberg/facenet/blob/master/src/models/inception_resnet_v1.py) in pytorch, pretrained on [VGGFace2](https://www.robots.ox.ac.uk/~vgg/data/vgg_face2/) and CASIA-Webface datasets, [MiniFASNet](https://github.com/AyuVirgiana/face-recognition-attendance-anti-spoofing/blob/main/src/model_lib/MiniFASNet.py) for Anti-Spoofing models by Minivision. 
+This repository is a modified version of the original [Face Recognition Attendance System](https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with-anti-spoofing) with added blockchain integration for enhanced security and transparency.
 
-The system is designed to accurately identify and record attendance using facial recognition while incorporating measures to prevent spoofing attempts.
+## Original Project Credits
+This project is based on the work by:
+- Keerthi Gowda H N (Original Repository Owner)
+- Ayu Purnama Virgiana (210040171)
+- I Komang Adisaputra Gita (210040017)
+
+## New Features Added
+- **Blockchain Integration**: 
+  - Smart contract-based attendance recording
+  - Immutable attendance records
+  - Enhanced security and transparency
+  - Decentralized storage of attendance data
 
 # Features
 The application allows users to perform the following tasks:
@@ -22,7 +32,9 @@ The entire code is written in Python **this project made and tested in python 3.
   visitor validation, viewing visitor history, and adding to the database.
 
 **Data Storage:**
-- This project store visitor information in two CSV files, one for general user information (visitors_db.csv) and another for visitor history (visitors_history.csv).
+- This project stores visitor information in:
+  - Two CSV files for general user information (visitors_db.csv) and visitor history (visitors_history.csv)
+  - Blockchain network for immutable attendance records
 
 **Face Recognition:**
 - Library:
@@ -32,6 +44,11 @@ The entire code is written in Python **this project made and tested in python 3.
 
 **Anti-Spoofing**
 - Model: [MiniFASNet](https://github.com/AyuVirgiana/face-recognition-attendance-anti-spoofing/blob/main/src/model_lib/MiniFASNet.py) supported by [Silent-Face-Anti-Spoofing](https://github.com/computervisioneng/Silent-Face-Anti-Spoofing.git) developed by (https://www.minivision.cn/).
+
+**Blockchain Integration:**
+- Smart contracts for attendance management
+- Ethereum network integration
+- Web3.py for blockchain interactions
 
 **Installation Requirements**
 - [requirement.txt](https://github.com/AyuVirgiana/face-recognition-attendance-anti-spoofing/blob/main/requirements.txt) consists the version of requirements we used in this app
@@ -77,8 +94,8 @@ visitor photo https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/AyuVirgiana/face-recognition-attendance-anti-spoofing.git
-   cd face-recognition-attendance-anti-spoofing
+   git clone https://github.com/YOUR-USERNAME/Blockchain-integrated-antispoofing-attendance-system.git
+   cd Blockchain-integrated-antispoofing-attendance-system
    ```
 
 2. **Create and Activate Virtual Environment** (Recommended)
@@ -97,9 +114,10 @@ visitor photo https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with
    pip install -r requirements.txt
    ```
 
-4. **Download Required Models**
-   - The face recognition model will be downloaded automatically on first run
-   - For anti-spoofing, ensure you have the MiniFASNet model files in the correct directory
+4. **Setup Blockchain Environment**
+   - Install MetaMask or any Ethereum wallet
+   - Configure your Ethereum network settings
+   - Deploy the smart contract using deploy_contract.py
 
 ## Running the Application
 
@@ -125,11 +143,14 @@ visitor photo https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with
 
 
 # References
-- This project is supported by [Silent-Face-Anti-Spoofing](https://github.com/computervisioneng/Silent-Face-Anti-Spoofing.git) belongs to [minivision technology](https://www.minivision.cn/).Special thanks to Minivision for providing the anti-spoofing models used in this test. 
-- (https://github.com/timesler/facenet-pytorch.git) Face Recognition using Pytorch by timesler
-- Pytorch model weights were initialized using parameters ported from [David Sandberg's tensorflow facenet repo](https://github.com/davidsandberg/facenet.git).
-
+- Original Project: [Face Recognition Attendance System](https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with-anti-spoofing)
+- This project is supported by [Silent-Face-Anti-Spoofing](https://github.com/computervisioneng/Silent-Face-Anti-Spoofing.git) belongs to [minivision technology](https://www.minivision.cn/)
+- [Face Recognition using Pytorch](https://github.com/timesler/facenet-pytorch.git) by timesler
+- Pytorch model weights were initialized using parameters ported from [David Sandberg's tensorflow facenet repo](https://github.com/davidsandberg/facenet.git)
 
 # Contributors
-- Ayu Purnama Virgiana (210040171)
-- I Komang Adisaputra Gita (210040017)
+- Original Contributors:
+  - Ayu Purnama Virgiana (210040171)
+  - I Komang Adisaputra Gita (210040017)
+- Blockchain Integration:
+  - Adla Abhinav Reddy - Blockchain Developer
