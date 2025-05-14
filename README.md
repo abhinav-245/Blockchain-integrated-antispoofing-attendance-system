@@ -94,7 +94,7 @@ visitor photo https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/YOUR-USERNAME/Blockchain-integrated-antispoofing-attendance-system.git
+   git clone https://github.com/abhinav-245/Blockchain-integrated-antispoofing-attendance-system.git
    cd Blockchain-integrated-antispoofing-attendance-system
    ```
 
