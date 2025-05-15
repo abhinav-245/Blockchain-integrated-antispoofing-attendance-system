@@ -123,3 +123,9 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Track visitor-related files but ignore their contents
+visitor_database/*
+!visitor_database/.gitkeep
+visitor_history/*
+!visitor_history/.gitkeep
