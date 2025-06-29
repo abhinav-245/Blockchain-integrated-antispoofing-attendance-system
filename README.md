@@ -154,3 +154,4 @@ visitor photo https://github.com/KeerthiGowdaHN/Face-recognition-attendance-with
   - I Komang Adisaputra Gita (210040017)
 - Blockchain Integration:
   - Adla Abhinav Reddy - Blockchain Developer
+  -Akhil Bommaraju - Compared with different approaches
